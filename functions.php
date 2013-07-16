@@ -284,14 +284,39 @@ function twentytwelve_content_nav( $html_id ) {
 }
 endif;
 
+if ( ! function_exists( 'emotionary_install' ) ) :
+	function emotionary_install() {
+		// Set up emotion post type
+		add_action( 'init', 'create_emotion_type' );
+		function create_emotion_type() {
+			register_post_type( 'emotion', 
+				array(
+					'labels' => array(
+						'name' => __( 'Emotions' ),
+						'singular_name' => __( 'Emotion' ),
+					),
+					'public' => true,
+					'has_archive' => true,
+					'rewrite' => array( 'slug' => 'emotionary' ),
+				)
+			);
+		}
+	}
+endif;
+
 if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	// Display the FEELIN IT links
 	function emotionary_feelin_it() {
+		// initiating emotionary javascript
+		wp_enqueue_script( 
+			'emotionary', 
+			get_template_directory_uri() . '/js/feelinit.js', 
+			array( 'jquery' ));
 		?>
 		<div id="feelin-it">
-			<a>
-				<img src="" />
-			</a>
+			
+				<p>Feelin It</p>
+			
 		</div>
 		
 		<?php

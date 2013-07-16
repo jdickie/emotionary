@@ -560,8 +560,8 @@ a:hover {
 	margin: 0.71428571428571rem 0 0.71428571428571rem 0;
 }
 .site-header img {
-	margin: 10px 0px 10px 210px;
-	margin: 0.71428571428571rem 0 0.71428571428571rem 15rem;
+	margin: 10px 0px 10px 160px;
+	margin: 0.71428571428571rem 0 0.71428571428571rem 7.14285714285714rem;
 }
 .site-header h2 {
 	left: 45%;
@@ -1011,18 +1011,30 @@ img.aligncenter {
 /* Feelin it */
 .site-content #feelin-it {
 	clear: both;
-	width: 110px;
-	width: 0.28571428571429rem;
-	height: 140px;
-	height: 10rem;
+	width: 155px;
+	width: 11.0714285714286rem;
+	height: 260px;
+	height: 18.5714285714286rem;
 	margin: 20px 425px 20px 0px;
 	margin: 1.42857142857143rem 0rem 1.42857142857143rem 30.3571428571429rem;
+	background: #ededed;
+	background-image: url('images/bg-feelinit-sketch.jpg');
+	cursor: pointer;
 }
-.site-content #feelin-it a {
+.site-content #feelin-it:hover {
+	background-image: url('images/bg-feelinit-hover-sketch.jpg');
+}
+.site-content #feelin-it.felt {
+	background-image: url('images/bg-feelinit-hover-sketch.jpg');
+}
+.site-content #feelin-it p {
 	display: block;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	padding: 4px;
 	padding: 0.28571428571429rem;
-	
+	text-indent: -9999px;
 }
 .site-content #index-related-posts h1 {
 	font-size: 14px;
@@ -1668,7 +1680,7 @@ img#wpstats {
 /* Minimum width of 960 pixels. */
 @media screen and (min-width: 960px) {
 	body {
-		background-color: #e6e6e6;
+		background-color: #FFF;
 	}
 	body .site {
 		padding: 0 40px;

@@ -35,8 +35,7 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="http://lorempixel.com/480/68" /></a>
-			<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri() . '/images/bg-logo.jpg'; ?>" width="700px" height="120px" /></a>
 		</hgroup>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
