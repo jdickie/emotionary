@@ -31,7 +31,7 @@ get_header(); ?>
 			
 			<?php 
 				// Only display related emotions IF tags and IF matches
-				$tags = emotionary_related_posts( the_ID() );
+				emotionary_related_posts();
 			?>
 		
 		<?php else : ?>

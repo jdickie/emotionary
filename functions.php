@@ -330,7 +330,7 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	*
 	* @since Emotionary 1.0
 	*/
-	function emotionary_related_posts( $id ) {
+	function emotionary_related_posts() {
 		// Find tags related to post_id $id
 		$tags = wp_get_post_tags( $current_post );
 		if ( isset( $tags ) ) : ?>
@@ -348,11 +348,10 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 		<div id="index-related-posts">
 			<h1>Related Emotions</h1>
 			<ul id="related-posts-list">
-				<?php while ( have_posts()) : the_post(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 					<li class="related-post">
 						<a class="post-link-wrapper" href="<?php echo get_permalink(); ?>">
 							<h2><?php echo the_title(); ?></h2>
-							
 						</a>
 					</li>
 				<?php endwhile; ?>
