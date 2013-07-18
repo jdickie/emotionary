@@ -322,6 +322,29 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 		<?php
 	}
 endif;
+if ( ! function_exists( 'emotionary_get_az' ) ) :
+	// Display all posts from a-z
+	function emotionary_get_az() {
+		$args = array( 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' );
+		$posts = get_posts($args);
+		// put these in separate div to be sorted by JS
+		?>
+		<div id="sort-az">
+			<?php foreach( $posts as $post ) : setup_postdata( $post ); ?>
+			<div id="post-dict-<?php the_ID(); ?>" class="post-dictionary">
+				<h3><?php the_title(); ?></h3>
+				<p><?php the_content(); ?></p>
+			</div>
+			<?php endforeach; ?>
+		</div>
+		<?php
+		wp_enqueue_script(
+			'emotionary',
+			get_template_directory_uri() . '/js/book-organizer.js',
+			array( 'jquery' )
+		);
+	}
+endif;
 
 if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	/**

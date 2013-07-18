@@ -37,7 +37,25 @@
 		<hgroup>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri() . '/images/bg-logo.jpg'; ?>" width="700px" height="120px" /></a>
 		</hgroup>
-
+		<div id="share-section">
+			<ul id="share-section-list">
+				<li id="tumblr">
+					<a href="#">
+						Tumblr
+					</a>
+				</li>
+				<li id="facebook">
+					<a href="#">
+						Facebook
+					</a>
+				</li>
+				<li id="twitter">
+					<a href="#">
+						Twitter
+					</a>
+				</li>
+			</ul>
+		</div>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
 			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>

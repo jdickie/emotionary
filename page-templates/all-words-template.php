@@ -23,7 +23,8 @@ get_header(); ?>
 						</div>
 					</div>
 				</div> <!-- #innerfix -->
-			</div>
+			</div><!-- #template-book-wrapper -->
+			<?php emotionary_get_az(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 

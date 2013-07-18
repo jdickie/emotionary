@@ -1513,6 +1513,10 @@ a.comment-edit-link:hover {
 	padding: 4px;
 	background: #ececec;
 }
+#sort-az {
+	display: none;
+}
+
 
 /*= Submit a Word Template
 -------------------------------------------------------------- */
@@ -1629,6 +1633,35 @@ img#wpstats {
 		float: right;
 		width: 26.041666667%;
 	}
+	#share-section ul {
+		position: relative;
+		overflow: hidden;
+		margin: 0 0 0 25%;
+		padding: 0;
+	}
+	#share-section li {
+		float: left;
+		margin: 2px 14px 10px 14px;
+		width: 80px;
+		height: 48px;
+	}
+	#share-section li#tumblr {
+		background: url('images/bg-tumblr.jpg') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#facebook {
+		background: url('images/bg-facebook.jpg') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#twitter {
+		background: url('images/bg-twitter.jpg') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section a {
+		display: block;
+		padding: 40px;
+		text-indent: -9999px;
+	}
 	.main-navigation ul.nav-menu,
 	.main-navigation div.nav-menu > ul {
 		display: inline-block !important;
@@ -1656,15 +1689,26 @@ img#wpstats {
 		color: #000;
 	}
 	.main-navigation li {
-		margin: 0 40px 0 0;
-		margin: 0 2.857142857rem 0 0;
+		margin: 0 20px 0 20px;
+		margin: 0 1.42857142857143rem 0 1.42857142857143rem;
 		position: relative;
+		width: 68px;
+		height: 80px;
+		float: left;
 	}
-	.main-navigation li.page-item-2 {
+	.main-navigation li.page-item-2 a {
 		background: url('images/bg-allwords.jpg') no-repeat;
+		background-position: 0 0;
 		text-indent: -9999px;
 		display: block;
-		width: 68px;
+		padding: 25px;
+	}
+	.main-navigation li.page-item-11 a {
+		display: block;
+		padding: 25px;
+		text-indent: -9999px;
+		background: url('images/bg-submitword.jpg') no-repeat;
+		background-position: 0 0;
 	}
 	.main-navigation li ul {
 		display: none;
