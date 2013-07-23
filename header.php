@@ -40,27 +40,23 @@
 		<div id="share-section">
 			<ul id="share-section-list">
 				<li id="tumblr">
-					<a href="#">
+					<a href="http://www.the-emotionary.tumblr.com" alt="Tumblr">
 						Tumblr
 					</a>
 				</li>
 				<li id="facebook">
-					<a href="#">
+					<a href="http://www.facebook.com/the-emotionary" alt="Facebook">
 						Facebook
 					</a>
 				</li>
 				<li id="twitter">
-					<a href="#">
+					<a href="http://www.twitter.com/theemotionary" alt="Twitter">
 						Twitter
 					</a>
 				</li>
 			</ul>
 		</div>
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
-			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+		
 
 		<?php $header_image = get_header_image();
 		if ( ! empty( $header_image ) ) : ?>

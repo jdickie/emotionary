@@ -601,8 +601,6 @@ a:hover {
 	margin-top: 24px;
 	margin-top: 1.714285714rem;
 	text-align: center;
-	border-top: 1px solid #ededed;
-	border-top: 0.07142857142857rem solid #ededed;
 	border-bottom: 1px solid #ededed;
 	border-bottom: 0.07142857142857rem solid #ededed;
 }
@@ -622,6 +620,17 @@ a:hover {
 }
 .main-navigation a:hover {
 	color: #21759b;
+}
+#menu-item-76 a, #menu-item-77 a {
+	display: block;
+	padding: 0 25px 5px 25px;
+	text-indent: -9999px;
+}
+#menu-item-76 a {
+	background: url('images/bg-submitword.jpg') no-repeat;
+}
+#menu-item-77 a {
+	background: url('images/bg-allwords.jpg') no-repeat;
 }
 .main-navigation ul.nav-menu,
 .main-navigation div.nav-menu > ul {
@@ -1499,22 +1508,64 @@ a.comment-edit-link:hover {
 }
 #template-column-left {
 	float: left;
-	width: 45%;
-	min-height: 620px;
-	padding: 4px;
-	background: #ededed;
+	width: 40%;
+	height: 500px;
+	padding: 16px;
+	background: transparent;
 }
 #template-column-right {
 	float: left;
 	margin-left: 3px;
 	margin-left: 0.21428571428571rem;
-	width: 45%;
-	min-height: 650px;
-	padding: 4px;
-	background: #ececec;
+	width: 40%;
+	height: 600px;
+	padding: 16px;
+	background: transparent;
+}
+.post-dictionary {
+	display: block;
+	padding: 3px;
+	line-height: 1.2em;
+	margin-bottom: 10px;
+}
+.post-dictionary h3 {
+	margin-bottom: 4px;
+	font-weight: bold;
+	font-size: 20px;
 }
 #sort-az {
 	display: none;
+}
+#az-page-nav {
+	clear: both;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 50px;
+	
+}
+#az-page-nave ul {
+	list-style-type: none;
+}
+#az-page-nav ul li {
+	display: inline;
+	width: 33px;
+	height: 40px;
+	margin: 0;
+	padding: 2px;
+	border: 1px solid #FFF;
+	background-color: #ededed;
+}
+#az-page-nav li#nav-left {
+	margin-left: 10px;
+	margin-right: 40px;
+}
+#az-page-nav li#nav-right {
+	margin-left: 80%;
+}
+#az-page-nav li a {
+	padding: 22px;
+	font-size: 14px;
 }
 
 
@@ -1666,7 +1717,7 @@ img#wpstats {
 	.main-navigation div.nav-menu > ul {
 		display: inline-block !important;
 		text-align: left;
-		width: 100%;
+		width: 50%;
 	}
 	.main-navigation ul {
 		margin: 0 0 0 80px;

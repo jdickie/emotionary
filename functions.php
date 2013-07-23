@@ -326,16 +326,26 @@ if ( ! function_exists( 'emotionary_get_az' ) ) :
 	// Display all posts from a-z
 	function emotionary_get_az() {
 		$args = array( 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC' );
-		$posts = get_posts($args);
+		query_posts( $args );
 		// put these in separate div to be sorted by JS
 		?>
+		<div id="az-page-nav">
+			<ul>
+				<li id="nav-left">
+					<a href="#"><--</a>
+				</li>
+				<li id="nav-right">
+					<a href="#">--></a>
+				</li>
+			</ul>
+		</div>
 		<div id="sort-az">
-			<?php foreach( $posts as $post ) : setup_postdata( $post ); ?>
+			<?php while ( have_posts()) : the_post(); ?>
 			<div id="post-dict-<?php the_ID(); ?>" class="post-dictionary">
 				<h3><?php the_title(); ?></h3>
 				<p><?php the_content(); ?></p>
 			</div>
-			<?php endforeach; ?>
+			<?php endwhile; ?>
 		</div>
 		<?php
 		wp_enqueue_script(
@@ -354,33 +364,33 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	* @since Emotionary 1.0
 	*/
 	function emotionary_related_posts() {
-		// Find tags related to post_id $id
-		$tags = wp_get_post_tags( $current_post );
-		if ( isset( $tags ) ) : ?>
-		<?php
-		 	$args = 'tag=';
-			foreach ( $tags as $t ) {
-				$args .= $t . ',';
-			}
-			// chop off ending ,
-			$args = substr($args, -1);
-			// Get the posts with this tag
-			$posts = new WP_Query( $args );
-			
-		?>
-		<div id="index-related-posts">
-			<h1>Related Emotions</h1>
-			<ul id="related-posts-list">
-				<?php while ( have_posts() ) : the_post(); ?>
-					<li class="related-post">
-						<a class="post-link-wrapper" href="<?php echo get_permalink(); ?>">
-							<h2><?php echo the_title(); ?></h2>
-						</a>
-					</li>
-				<?php endwhile; ?>
-			</ul>
-		</div>
+		// Find posts with same category
 		
+			if ( isset( $tags ) ) : ?>
+			<?php
+			 	$args = 'tag=';
+				foreach ( $tags as $t ) {
+					$args .= $t . ',';
+				}
+				// chop off ending ,
+				$args = substr($args, -1);
+				// Get the posts with this tag
+				$posts = new WP_Query( $args );
+			
+			?>
+			<div id="index-related-posts">
+				<h1>Related Emotions</h1>
+				<ul id="related-posts-list">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<li class="related-post">
+							<a class="post-link-wrapper" href="<?php echo get_permalink(); ?>">
+								<h2><?php echo the_title(); ?></h2>
+							</a>
+						</li>
+					<?php endwhile; ?>
+				</ul>
+			</div>
+	  
 		<?php endif;
 	}
 endif;
@@ -447,16 +457,48 @@ function twentytwelve_comment( $comment, $args, $depth ) {
 	endswitch; // end comment_type check
 }
 endif;
-
-if ( ! function_exists( 'twentytwelve_entry_meta' ) ) :
+if ( ! function_exists( 'emotionary_content_header' ) ) :
+	// Displays header for content 
+	function emotionary_content_header() {
+		$size = 'medium';
+		// Is single content or not?
+		if ( has_post_thumbnail() ) {
+			if( is_single() ) {
+				the_post_thumbnail();
+				return;
+			} else {
+				?>
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_post_thumbnail($size, array(
+					'alt' => the_title()
+				)); ?></a>
+				<?php
+				return;
+			}
+		} else {
+			if( is_single() ) {
+				?>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<?php 
+				return;
+			} else {
+				?>
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+				<?php
+				return;
+			}
+		}
+	}
+endif; 
+if ( ! function_exists( 'emotionary_entry_meta' ) ) :
 /**
+ * REPLACES TWENTYWELVE FUNCTION
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
  *
  * Create your own twentytwelve_entry_meta() to override in a child theme.
  *
- * @since Twenty Twelve 1.0
+ * @since Emotionary 1.0
  */
-function twentytwelve_entry_meta() {
+function emotionary_entry_meta() {
 	// Translators: used between list items, there is a space after the comma.
 	$categories_list = get_the_category_list( __( ', ', 'twentytwelve' ) );
 
@@ -478,19 +520,18 @@ function twentytwelve_entry_meta() {
 
 	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
 	if ( $tag_list ) {
-		$utility_text = __( 'This entry was posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'Filed under %1$s and tagged %2$s on %3$s.', 'twentytwelve' );
 	} elseif ( $categories_list ) {
-		$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'Filed under %1$s on %3$s.', 'twentytwelve' );
 	} else {
-		$utility_text = __( 'This entry was posted on %3$s<span class="by-author"> by %4$s</span>.', 'twentytwelve' );
+		$utility_text = __( 'Filed under %3$s.', 'twentytwelve' );
 	}
 
 	printf(
 		$utility_text,
 		$categories_list,
 		$tag_list,
-		$date,
-		$author
+		$date
 	);
 }
 endif;
