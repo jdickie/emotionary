@@ -20,8 +20,7 @@
 		</nav><!-- #site-navigation -->
 		
 		<div class="site-info">
-			<?php do_action( 'twentytwelve_credits' ); ?>
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentytwelve' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentytwelve' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentytwelve' ), 'WordPress' ); ?></a>
+			<span class="copyright">&copy; <?php printf( __( '%s by Eden Sher' ), the_time('Y') ); ?></span>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

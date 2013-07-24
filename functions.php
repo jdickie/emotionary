@@ -305,23 +305,62 @@ if ( ! function_exists( 'emotionary_install' ) ) :
 endif;
 
 if ( ! function_exists( 'emotionary_related_posts' ) ) :
-	// Display the FEELIN IT links
+	// Display the FEELIN IT links and provides functionality
+	// 
+	// TODO: This should be a plugin, I know I know ... 
 	function emotionary_feelin_it() {
 		// initiating emotionary javascript
 		wp_enqueue_script( 
 			'emotionary', 
 			get_template_directory_uri() . '/js/feelinit.js', 
 			array( 'jquery' ));
+		
+		/*
+		 * Used for registering felt emotions 
+		 *
+		 */ 
+
+		if ( isset($_GET['IP']) && isset($_GET['post_id']) ) {
+			if ( (preg_match('/[A-Za-z<>\/]+/', $_GET['IP']) == 0) && (preg_match( '/[A-Za-z<>\/\.]+/', $_GET['post_id'] ) == 0) ) {
+				// clean
+				$postid = $_GET['post_id'];
+				$ip = $_GET['IP'];
+
+				update_post_meta( $postid, $ip, 'felt' );
+			} else {
+				die('Error - code invalid');
+			}
+		}
 		?>
 		<div id="feelin-it">
 			
 				<p>Feelin It</p>
-			
+				<span id="ip-invisible"><?php printf( '%s', $_SERVER['REMOTE_ADDR'] ); ?></span>
 		</div>
 		
 		<?php
 	}
 endif;
+
+if ( ! function_exists('emotionary_has_already_felt') ) : 
+	// Checks to see if given IP already felt this post
+	function emotionary_has_already_felt($ip, $post_id) {
+		
+	}
+endif;
+
+if ( ! function_exists('emotionary_felt_count') ) :
+	// Inserts how many times this given IP has been felt
+	function emotionary_felt_count() {
+		$felts = get_post_custom_keys();
+		?>
+		
+		<div id="felt-count">Felt <?php echo count($felts); ?> times</div>
+		
+		<?php
+	}
+endif;
+
 if ( ! function_exists( 'emotionary_get_az' ) ) :
 	// Display all posts from a-z
 	function emotionary_get_az() {
@@ -482,7 +521,9 @@ if ( ! function_exists( 'emotionary_content_header' ) ) :
 				return;
 			} else {
 				?>
+				<h1>
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+				</h1>
 				<?php
 				return;
 			}

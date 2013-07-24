@@ -560,8 +560,8 @@ a:hover {
 	margin: 0.71428571428571rem 0 0.71428571428571rem 0;
 }
 .site-header img {
-	margin: 10px 0px 10px 160px;
-	margin: 0.71428571428571rem 0 0.71428571428571rem 7.14285714285714rem;
+	margin: 10px auto 10px auto;
+	margin: 0.71428571428571rem auto 0.71428571428571rem auto;
 }
 .site-header h2 {
 	left: 45%;
@@ -713,6 +713,12 @@ footer[role="contentinfo"] a:hover {
 	color: #21759b;
 }
 
+.copyright {
+	float: left;
+	width: 100%;
+}
+
+
 
 /* =Main content and comment content
 -------------------------------------------------------------- */
@@ -774,12 +780,11 @@ article.sticky .featured-post {
 .mu_register {
 	line-height: 1.714285714;
 }
+/* Removing h3 from list -- used for pronunciation */
 .entry-content h1,
 .comment-content h1,
 .entry-content h2,
 .comment-content h2,
-.entry-content h3,
-.comment-content h3,
 .entry-content h4,
 .comment-content h4,
 .entry-content h5,
@@ -808,6 +813,8 @@ article.sticky .featured-post {
 	font-size: 16px;
 	font-size: 1.142857143rem;
 	line-height: 1.846153846;
+	margin: 0;
+	padding: 0;
 }
 .entry-content h4,
 .comment-content h4 {
@@ -831,9 +838,9 @@ article.sticky .featured-post {
 .entry-summary p,
 .comment-content p,
 .mu_register p {
-	margin: 0 0 24px;
-	margin: 0 0 1.714285714rem;
-	line-height: 1.714285714;
+	margin: 0 0 11px;
+	margin: 0 0 0.78571428571429rem;
+	line-height: 1.5;
 }
 .entry-content ol,
 .comment-content ol,
@@ -1044,6 +1051,15 @@ img.aligncenter {
 	padding: 0.28571428571429rem;
 	text-indent: -9999px;
 }
+/* Felt count */
+#felt-count {
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 10px;
+	padding: 0;
+	font-size: 13px;
+	display: block;
+}
 .site-content #index-related-posts h1 {
 	font-size: 14px;
 	font-size: 1rem;
@@ -1233,6 +1249,18 @@ article.format-quote .entry-content blockquote {
 }
 .format-status .entry-header header {
 	display: inline-block;
+}
+.entry-header h1 {
+	/* Used for front page */
+	font-size: 20px;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+}
+.entry-header h1 a,
+.entry-header h1 a:link,
+.entry-header h1 a:visited {
+	color: #000;
 }
 .format-status .entry-header h1 {
 	font-size: 15px;
@@ -1583,11 +1611,53 @@ a.comment-edit-link:hover {
 }
 #emotionary-form-wrapper {
 	position: relative;
-	margin-left: 45%;
-	width: 720px;
+	margin-left: 15%;
+	margin-right: auto;
+	width: 800px;
+	height: 615px;
+	background: url('images/bg-submitform-notecard-720.png') no-repeat;
+	background-position: 0 0;
 }
-
-
+/* Reset */
+#emotionary-form-wrapper table,
+#emotionary-form-wrapper td,
+#emotionary-form-wrapper th,
+#emotionary-form-wrapper tr,
+#emotionary-form-wrapper #form1 {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-family: "Times New Roman", Times, serif;
+	color: #000;
+}
+#emotionary-form-wrapper #form1 {
+	width: 75%;
+	position: absolute;
+  top: 159px;
+	right: 75px;
+}
+#emotionary-form-wrapper .wdform_table1 {
+	
+}
+#emotionary-form-wrapper td {
+	width: auto;
+	height: 30px;
+}
+#emotionary-form-wrapper td .label {
+	font-size: 14px;
+	font-weight: bold;
+}
+#emotionary-form-wrapper input,
+#emotionary-form-wrapper textarea {
+	background: transparent;
+}
+.button_submit {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 40px;
+	background: transparent;
+	border: none;
+}
 
 /* =Widgets
 -------------------------------------------------------------- */

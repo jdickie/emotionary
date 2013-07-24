@@ -35,7 +35,7 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri() . '/images/bg-logo.jpg'; ?>" width="700px" height="120px" /></a>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri() . '/images/bg-logo-a.jpg'; ?>" width="940px" height="240px" /></a>
 		</hgroup>
 		<div id="share-section">
 			<ul id="share-section-list">
