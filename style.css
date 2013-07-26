@@ -354,16 +354,7 @@ video {
 	margin-left: auto;
 	margin-right: auto;
 }
-.entry-content img,
-.comment-content img,
-.widget img,
-img.header-image,
-.author-avatar img,
-img.wp-post-image {
-	/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
-	border-radius: 3px;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-}
+/* Removing fancy borders for images! No more! */
 .wp-caption {
 	max-width: 100%; /* Keep wide captions from overflowing their container. */
 	padding: 4px;
@@ -621,9 +612,12 @@ a:hover {
 .main-navigation a:hover {
 	color: #21759b;
 }
-#menu-item-76 a, #menu-item-77 a {
+#menu-item-76 a, #menu-item-77 a,
+#menu-item-82 a {
 	display: block;
 	padding: 0 25px 5px 25px;
+	width: 100px;
+	height: 140px;
 	text-indent: -9999px;
 }
 #menu-item-76 a {
@@ -631,6 +625,15 @@ a:hover {
 }
 #menu-item-77 a {
 	background: url('images/bg-allwords.jpg') no-repeat;
+}
+#menu-item-77 a:hover {
+	background: url('images/bg-allwords-hover.jpg') no-repeat;
+}
+#menu-item-82 a {
+	background: url('images/bg-wordsmf.png') no-repeat;
+}
+#menu-item-82 a:hover {
+	background: url('images/bg-wordsmf-hover.png') no-repeat;
 }
 .main-navigation ul.nav-menu,
 .main-navigation div.nav-menu > ul {
@@ -1659,6 +1662,32 @@ a.comment-edit-link:hover {
 	border: none;
 }
 
+/* =Words Most Felt
+-------------------------------------------------------------- */
+
+#most-felt-wrapper {
+	margin-right: auto;
+	margin-left: auto;
+	width: 440px;
+}
+.most-felt-item {
+	width: 100%;
+	margin: 25px 0 25px 0;
+}
+.most-felt-item h2 {
+	font-size: 20px;
+	font-weight: bold;
+	width: 55%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.most-felt-item a {
+
+	text-decoration: underline;
+	padding: 10px;
+	color: #000;
+}
+
 /* =Widgets
 -------------------------------------------------------------- */
 
@@ -1787,7 +1816,7 @@ img#wpstats {
 	.main-navigation div.nav-menu > ul {
 		display: inline-block !important;
 		text-align: left;
-		width: 50%;
+		width: 75%;
 	}
 	.main-navigation ul {
 		margin: 0 0 0 80px;
@@ -1810,11 +1839,11 @@ img#wpstats {
 		color: #000;
 	}
 	.main-navigation li {
-		margin: 0 20px 0 20px;
-		margin: 0 1.42857142857143rem 0 1.42857142857143rem;
+		margin: 0 40px 0 40px;
+		margin: 0 2.85714285714286rem 0 2.85714285714286rem;
 		position: relative;
-		width: 68px;
-		height: 80px;
+		width: 100px;
+		height: 140px;
 		float: left;
 	}
 	.main-navigation li.page-item-2 a {

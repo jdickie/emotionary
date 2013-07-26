@@ -4,6 +4,11 @@
 	// Handle the Feelin It link
 	$('#feelin-it').live('click', function(e) {
 		e.preventDefault();
+		if($(this).hasClass("alreadyfelt")) {
+			console.log("already felt");
+			return;
+			console.log("should be dead");
+		}
 		
 		if ($(this).hasClass("felt")) {
 			// $(this).removeClass("felt");

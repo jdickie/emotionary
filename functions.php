@@ -320,20 +320,12 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 		 *
 		 */ 
 
-		if ( isset($_GET['IP']) && isset($_GET['post_id']) ) {
-			if ( (preg_match('/[A-Za-z<>\/]+/', $_GET['IP']) == 0) && (preg_match( '/[A-Za-z<>\/\.]+/', $_GET['post_id'] ) == 0) ) {
-				// clean
-				$postid = $_GET['post_id'];
-				$ip = $_GET['IP'];
-
-				update_post_meta( $postid, $ip, 'felt' );
-			} else {
-				die('Error - code invalid');
-			}
-		}
+		
+		$felt_class = emotionary_has_already_felt($_SERVER['REMOTE ADDR'], get_the_ID()); 
+		
 		?>
-		<div id="feelin-it">
-			
+		<div id="feelin-it" <?php if ($felt_class) : ?>class="alreadyfelt"<?php endif; ?>>
+				
 				<p>Feelin It</p>
 				<span id="ip-invisible"><?php printf( '%s', $_SERVER['REMOTE_ADDR'] ); ?></span>
 		</div>
@@ -345,7 +337,13 @@ endif;
 if ( ! function_exists('emotionary_has_already_felt') ) : 
 	// Checks to see if given IP already felt this post
 	function emotionary_has_already_felt($ip, $post_id) {
-		
+		$felt = get_post_custom_values($ip, $post_id);
+		if ( count($felt) > 0 ) {
+			// User already felt this at this IP
+			return true;
+		} else {
+			return false;
+		}
 	}
 endif;
 
@@ -353,11 +351,7 @@ if ( ! function_exists('emotionary_felt_count') ) :
 	// Inserts how many times this given IP has been felt
 	function emotionary_felt_count() {
 		$felts = get_post_custom_keys();
-		?>
-		
-		<div id="felt-count">Felt <?php echo count($felts); ?> times</div>
-		
-		<?php
+		return printf(__('Felt %s times'), count($felts));
 	}
 endif;
 
@@ -433,6 +427,31 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 		<?php endif;
 	}
 endif;
+
+if ( ! function_exists( 'emotionary_words_most_felt' ) ) :
+	// Generates array of posts - sorted by most felt
+	function emotionary_words_most_felt() {
+		$args = array( 'posts_per_page' => 10 );
+		query_posts( $args );
+		?>
+		<div id="most-felt-wrapper">
+		<?php
+		while( have_posts() ) : the_post(); ?>
+			<div id="<?php the_ID(); ?>" class="most-felt-item">
+			<?php if( has_post_thumbnail() ) : ?>
+			<a href="<?php the_permalink(); ?>">
+				<?php the_post_thumbnail( 'medium' ); ?>
+			</a>
+			<?php else: ?>
+				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+			<?php endif; ?>
+			</div>
+		<?php endwhile; ?>
+		</div>
+		<?php
+	}
+endif;
+
 if ( ! function_exists( 'twentytwelve_comment' ) ) :
 /**
  * Template for comments and pingbacks.
@@ -503,13 +522,11 @@ if ( ! function_exists( 'emotionary_content_header' ) ) :
 		// Is single content or not?
 		if ( has_post_thumbnail() ) {
 			if( is_single() ) {
-				the_post_thumbnail();
+				the_post_thumbnail( 'medium' );
 				return;
 			} else {
 				?>
-				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_post_thumbnail($size, array(
-					'alt' => the_title()
-				)); ?></a>
+				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'twentytwelve' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_post_thumbnail('large'); ?></a>
 				<?php
 				return;
 			}
@@ -567,7 +584,9 @@ function emotionary_entry_meta() {
 	} else {
 		$utility_text = __( 'Filed under %3$s.', 'twentytwelve' );
 	}
-
+	
+	$c = emotionary_felt_count();
+	
 	printf(
 		$utility_text,
 		$categories_list,

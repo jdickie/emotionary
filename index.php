@@ -15,6 +15,22 @@
  */
 // Converting to full layout
 get_header(); ?>
+	<?php 
+	if ( isset($_GET['IP']) && isset($_GET['post_id']) ) {
+		if ( (preg_match('/[A-Za-z<>\/]+/', $_GET['IP']) == 0) && (preg_match( '/[A-Za-z<>\/\.]+/', $_GET['post_id'] ) == 0) ) {
+			// clean
+			$postid = $_GET['post_id'];
+			$ip = $_GET['IP'];
+			
+			if( ! update_post_meta( $postid, $ip, 'felt' ) ) {
+				add_post_meta( $postid, $ip, 'felt', true );
+			}
+			?> <h1>OH WHAT A GREAT SUCCESS!</h1> <?php
+		} else {
+			die('Error - code invalid');
+		}
+	}
+	?>
 
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
@@ -27,8 +43,7 @@ get_header(); ?>
 			<?php endwhile; ?>
 
 			<?php emotionary_nav_next( 'nav-right' ); ?>
-			
-			<?php emotionary_felt_count(); ?>
+		
 			<?php emotionary_feelin_it(); ?>
 			
 			<?php 
