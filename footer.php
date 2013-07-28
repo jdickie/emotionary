@@ -12,13 +12,13 @@
 ?>
 	</div><!-- #main .wrapper -->
 	<footer id="colophon" role="contentinfo">
-	
+		<div class="line-clear long">&nbsp;</div>
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<h3 class="menu-toggle"><?php _e( 'Menu', 'twentytwelve' ); ?></h3>
 			<a class="assistive-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'twentytwelve' ); ?>"><?php _e( 'Skip to content', 'twentytwelve' ); ?></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
-		
+		<div class="line-clear long">&nbsp;</div>
 		<div class="site-info">
 			<span class="copyright">&copy; <?php printf( __( '%s by Eden Sher, ' ), the_time('Y') ); 
 			print __('Illustrations by ') . "<a href=\"http://elizabethgraeber.com\">Elizabeth Graeber</a>" . 

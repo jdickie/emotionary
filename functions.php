@@ -304,7 +304,7 @@ if ( ! function_exists( 'emotionary_install' ) ) :
 		}
 	}
 endif;
-
+/*
 if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	// Display the FEELIN IT links and provides functionality
 	// 
@@ -316,11 +316,6 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 			get_template_directory_uri() . '/js/feelinit.js', 
 			array( 'jquery' ));
 		
-		/*
-		 * Used for registering felt emotions 
-		 *
-		 */ 
-
 		
 		$felt_class = emotionary_has_already_felt($_SERVER['REMOTE ADDR'], get_the_ID()); 
 		
@@ -334,7 +329,7 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 		<?php
 	}
 endif;
-
+*/
 if ( ! function_exists('emotionary_has_already_felt') ) : 
 	// Checks to see if given IP already felt this post
 	function emotionary_has_already_felt($ip, $post_id) {
@@ -482,29 +477,7 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'emotionary_words_most_felt' ) ) :
-	// Generates array of posts - sorted by most felt
-	function emotionary_words_most_felt() {
-		$args = array( 'posts_per_page' => 10 );
-		query_posts( $args );
-		?>
-		<div id="most-felt-wrapper">
-		<?php
-		while( have_posts() ) : the_post(); ?>
-			<div id="<?php the_ID(); ?>" class="most-felt-item">
-			<?php if( has_post_thumbnail() ) : ?>
-			<a href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'medium' ); ?>
-			</a>
-			<?php else: ?>
-				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-			<?php endif; ?>
-			</div>
-		<?php endwhile; ?>
-		</div>
-		<?php
-	}
-endif;
+
 
 if ( ! function_exists( 'twentytwelve_comment' ) ) :
 /**
@@ -638,9 +611,7 @@ function emotionary_entry_meta() {
 	} else {
 		$utility_text = __( 'Filed under %3$s.', 'twentytwelve' );
 	}
-	
-	$c = emotionary_felt_count();
-	
+		
 	printf(
 		$utility_text,
 		$categories_list,
