@@ -356,6 +356,39 @@ if ( ! function_exists('emotionary_felt_count') ) :
 	}
 endif;
 
+if ( ! function_exists( 'emotionary_get_az_category' ) ) :
+	// Display all posts from a-z filtered by category
+	function emotionary_get_az_category() {
+			// put these in separate div to be sorted by JS
+			// wp_reset_query();
+			query_posts( array(
+				'posts_per_page' => -1,
+				'cat' => get_cat_ID( single_cat_title('', false) )
+			) );
+			?>
+			<div id="sort-az">
+				<?php while( have_posts() ) : the_post(); ?>
+				<div id="post-dict-<?php the_ID(); ?>" class="post-dictionary">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<a href="<?php the_permalink();?>"><?php the_post_thumbnail(); ?></a>
+					<b>( <?php the_title(); ?> )</b>
+				<?php else: ?>
+					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+				<?php endif; ?>
+					<p><?php the_content(); ?></p>
+					<?php emotionary_entry_meta(); ?>
+				</div>
+				<?php endwhile; ?>
+			</div>
+			<?php
+			wp_enqueue_script(
+				'emotionary',
+				get_template_directory_uri() . '/js/book-organizer.js',
+				array( 'jquery' )
+			);
+	}
+endif;
+
 if ( ! function_exists( 'emotionary_get_az' ) ) :
 	// Display all posts from a-z
 	function emotionary_get_az() {
@@ -363,21 +396,17 @@ if ( ! function_exists( 'emotionary_get_az' ) ) :
 		query_posts( $args );
 		// put these in separate div to be sorted by JS
 		?>
-		<div id="az-page-nav">
-			<ul>
-				<li id="nav-left">
-					<a href="#"><--</a>
-				</li>
-				<li id="nav-right">
-					<a href="#">--></a>
-				</li>
-			</ul>
-		</div>
 		<div id="sort-az">
 			<?php while ( have_posts()) : the_post(); ?>
 			<div id="post-dict-<?php the_ID(); ?>" class="post-dictionary">
-				<h3><?php the_title(); ?></h3>
+			<?php if ( has_post_thumbnail() ) : ?>
+				<a href="<?php the_permalink();?>"><?php the_post_thumbnail(); ?></a>
+				<b>( <?php the_title(); ?> )</b>
+			<?php else: ?>
+				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			<?php endif; ?>
 				<p><?php the_content(); ?></p>
+				<?php emotionary_entry_meta(); ?>
 			</div>
 			<?php endwhile; ?>
 		</div>
@@ -400,27 +429,51 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 	function emotionary_related_posts() {
 		// Find posts with same category
 		
-			if ( isset( $tags ) ) : ?>
+			if ( has_category() ) : ?>
 			<?php
-			 	$args = 'tag=';
-				foreach ( $tags as $t ) {
-					$args .= $t . ',';
+				// Save current ID for later
+				$cur_id = get_the_ID();
+				// get Categories
+				$cats = get_the_category();
+				if( is_array( $cats ) ) {
+					$temp = array();
+					foreach($cats as $c) {
+						array_push($temp, $c->term_id);
+					}
+					$cats = $temp;
+				} else {
+					$cats = $cats->term_id;
 				}
-				// chop off ending ,
-				$args = substr($args, -1);
-				// Get the posts with this tag
-				$posts = new WP_Query( $args );
-			
+				// this is happening after main loop, need to re-query
+				$args = array(
+					'cat' => $cats[0],
+					'posts_per_page' => -1
+				);
+				query_posts($args);
+			 	
+				// stop after x amount
+				$x = 3;
+				$count = 0;
 			?>
 			<div id="index-related-posts">
 				<h1>Related Emotions</h1>
+				<div class="line-clear">&nbsp;</div>
 				<ul id="related-posts-list">
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php while ( have_posts() && ($count < $x) ) : the_post(); ?>
+						<?php if( $cur_id != get_the_ID() ) : ?>
 						<li class="related-post">
 							<a class="post-link-wrapper" href="<?php echo get_permalink(); ?>">
-								<h2><?php echo the_title(); ?></h2>
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail(); ?>
+									<p>( <?php the_title(); ?> )</p>
+								<?php else: ?>
+									<h3><?php the_title(); ?></h2>
+								<?php endif; ?>
+								<?php the_excerpt(); ?>
 							</a>
 						</li>
+						<?php $count++; 
+					endif; ?>
 					<?php endwhile; ?>
 				</ul>
 			</div>

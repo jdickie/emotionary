@@ -30,7 +30,7 @@
 		// Get max height for columns
 		var leftmax = get_max('#template-column-left'),
 		rightmax = get_max('#template-column-right'), 
-		colleft = $('#template-column-left'), colright = $('#template-column-right'),
+		colleft = $('#template-column-left .inner-page'), colright = $('#template-column-right .inner-page'),
 		colcount = 0,
 		leftfull = false, h, colwidth = get_width(), cur_el = null;
 		
@@ -57,12 +57,11 @@
 			} else if ( (leftfull === false) && ((colcount + h) >= leftmax) ) {
 				leftfull = true;
 				// remove cur_el and put in right column
+				$(o).appendTo(colright);
 				page_array[cur_page]['right'] = page_array[cur_page]['right'] + '' + clone_div($(o));
 				colcount = 0;
-				console.log( 'colcount reset' );
 			}	else if ( leftfull && ((colcount + h) < rightmax) ) {
 				page_array[cur_page]['right'] = page_array[cur_page]['right'] + '' + clone_div($(o));
-				console.log((colcount + h) + ' is less than ' + rightmax);
 				
 			} else {
 				$(o).prependTo('#sort-az');
@@ -72,34 +71,36 @@
 		});
 	};
 	
-	
 	var turn_page = function(dir) {
 		if (dir === 'back') {
 			cur_page = cur_page - 1;
 			if ( cur_page < 0 ) {
 				cur_page = 0;
+				$('#nav-left').hide();
 				return;
 			}
 			if (!page_array[cur_page]) {
 				sort_columns();
+				
 			} else {
-				$('#template-column-left').empty().append(page_array[cur_page]['left']);
-				$('#template-column-right').empty().append(page_array[cur_page]['right']);
+				$('#template-column-left .inner-page').empty().append(page_array[cur_page]['left']);
+				$('#template-column-right .inner-page').empty().append(page_array[cur_page]['right']);
 			}
+			return;
 		} else if (dir === 'next') {
 			cur_page = cur_page + 1;
 			if ( (!page_array[cur_page]) && ($('#sort-az div').length === 0) ) {
 				cur_page = cur_page - 1;
 				return;
 			} else if( !page_array[cur_page]) {
-				$('#template-column-left').empty();
-				$('#template-column-right').empty();
+				$('#template-column-left .inner-page').empty();
+				$('#template-column-right .inner-page').empty();
 				sort_columns();
 				return;
 			} 
 			
-			$('#template-column-left').empty().append(page_array[cur_page]['left']);
-			$('#template-column-right').empty().append(page_array[cur_page]['right']);
+			$('#template-column-left .inner-page').empty().append(page_array[cur_page]['left']);
+			$('#template-column-right .inner-page').empty().append(page_array[cur_page]['right']);
 		}
 	};
 	
@@ -109,8 +110,15 @@
 		$('#nav-left a').click(function(e) {
 			e.preventDefault();
 			turn_page('back');
+			
 		});
+		$('#nav-left').hide();
 		
+		if ( (!page_array[cur_page]) && ($('#sort-az div').length === 0) ) {
+			cur_page = cur_page - 1;
+			$('#nav-right').hide();
+			return;
+		}
 		$('#nav-right a').click(function(e) {
 			e.preventDefault();
 			turn_page('next');

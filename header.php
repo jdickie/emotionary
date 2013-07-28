@@ -35,7 +35,10 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<hgroup>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri() . '/images/bg-logo-a.jpg'; ?>" width="940px" height="240px" /></a>
+			<?php $header_image = get_header_image();
+			if ( ! empty( $header_image ) ) : ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
+			<?php endif; ?>
 		</hgroup>
 		<div id="share-section">
 			<ul id="share-section-list">
@@ -56,12 +59,7 @@
 				</li>
 			</ul>
 		</div>
-		
-
-		<?php $header_image = get_header_image();
-		if ( ! empty( $header_image ) ) : ?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
-		<?php endif; ?>
+		<div class="line-clear">&nbsp;</div>
 	</header><!-- #masthead -->
-
+	
 	<div id="main" class="wrapper">

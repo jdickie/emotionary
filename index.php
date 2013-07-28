@@ -47,7 +47,7 @@ get_header(); ?>
 			<?php emotionary_feelin_it(); ?>
 			
 			<?php 
-				// Only display related emotions IF tags and IF matches
+				// Only display related emotions 
 				emotionary_related_posts();
 			?>
 		

@@ -18,8 +18,18 @@ get_header(); ?>
 				
 					<div id="book-main">
 						<div id="template-column-left">
+							<div class="inner-page">
+							</div>
+							<div id="nav-left">
+								<a href='#'><--</a>
+							</div>
 						</div>
 						<div id="template-column-right">
+							<div class="inner-page">
+							</div>
+							<div id="nav-right">
+								<a href='#'>--></a>
+							</div>
 						</div>
 					</div>
 				</div> <!-- #innerfix -->
