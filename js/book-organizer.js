@@ -34,6 +34,9 @@
 		colcount = 0,
 		leftfull = false, h, colwidth = get_width(), cur_el = null;
 		
+		console.log('sort columns');
+		console.log($('#sort-az > div').length);
+		
 		// Fetch post, stick it in either column, make sure we don't go over max y values
 		$('#sort-az > div').each(function(i, o) {
 			if (!page_array[cur_page]) {
@@ -76,31 +79,50 @@
 			cur_page = cur_page - 1;
 			if ( cur_page < 0 ) {
 				cur_page = 0;
-				$('#nav-left').hide();
+				check_pages();
 				return;
 			}
 			if (!page_array[cur_page]) {
 				sort_columns();
-				
+				check_pages();
 			} else {
 				$('#template-column-left .inner-page').empty().append(page_array[cur_page]['left']);
 				$('#template-column-right .inner-page').empty().append(page_array[cur_page]['right']);
+				check_pages();
 			}
 			return;
 		} else if (dir === 'next') {
 			cur_page = cur_page + 1;
 			if ( (!page_array[cur_page]) && ($('#sort-az div').length === 0) ) {
 				cur_page = cur_page - 1;
+				check_pages();
 				return;
 			} else if( !page_array[cur_page]) {
 				$('#template-column-left .inner-page').empty();
 				$('#template-column-right .inner-page').empty();
 				sort_columns();
+				
+				check_pages();
+				
 				return;
 			} 
 			
 			$('#template-column-left .inner-page').empty().append(page_array[cur_page]['left']);
 			$('#template-column-right .inner-page').empty().append(page_array[cur_page]['right']);
+			check_pages();
+		}
+	};
+	
+	var check_pages = function() {
+		$( '#nav-right' ).hide(); $( '#nav-left' ).hide();
+		var next = ( cur_page + 1 ), prev = ( cur_page - 1 );
+		if( page_array[next] || ($('#sort-az > div').length > 0) ) {
+			// another page forward
+			$( '#nav-right' ).show();
+		} 
+		
+		if( page_array[prev] ) {
+			$( '#nav-left' ).show();
 		}
 	};
 	

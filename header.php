@@ -43,17 +43,17 @@
 		<div id="share-section">
 			<ul id="share-section-list">
 				<li id="tumblr">
-					<a href="http://www.the-emotionary.tumblr.com" alt="Tumblr">
+					<a href="http://www.the-emotionary.tumblr.com" alt="Tumblr" target="_blank">
 						Tumblr
 					</a>
 				</li>
 				<li id="facebook">
-					<a href="http://www.facebook.com/the-emotionary" alt="Facebook">
+					<a href="http://www.facebook.com/the-emotionary" alt="Facebook" target="_blank">
 						Facebook
 					</a>
 				</li>
 				<li id="twitter">
-					<a href="http://www.twitter.com/theemotionary" alt="Twitter">
+					<a href="http://www.twitter.com/theemotionary" alt="Twitter" target="_blank">
 						Twitter
 					</a>
 				</li>

@@ -581,6 +581,7 @@ a:hover {
 .site-header img {
 	margin: 10px auto 10px auto;
 	margin: 0.71428571428571rem auto 0.71428571428571rem auto;
+	width: 960px;
 }
 .site-header h2 {
 	left: 45%;
@@ -1578,16 +1579,18 @@ a.comment-edit-link:hover {
 -------------------------------------------------------------- */
 #template-book-wrapper {
 	/* Contains all divs for content section */
-	width: 960px;
-	height: 1134px;
+	margin: 0;
+	padding: 0;
+	width: 1000px;
+	height: 1100px;
 	/* position in middle */
 	overflow: hidden;
 	position: relative;
 }
 #book-side {
 	/* Side fold of book */
-	width: 135px;
-	height: 1040px; /* fixed height for all sections */
+	width: 116px;
+	height: 1186px; /* fixed height for all sections */
 	float: left;
 	margin: 0;
 	background: url('images/bg-allwords-side.jpg') no-repeat;
@@ -1595,34 +1598,32 @@ a.comment-edit-link:hover {
 
 #inner-fix {
 	/* Clears the side of the book */
-	width: 820px;
-	height: 1040px;
+	width: 850px;
+	height: 1185px;
 	float: left;
 	position: relative;
 	overflow: hidden;
 }
 #book-top {
 	/* Header element for book */
-	width: 100%;
-	height: 170px;
+	width: 845px;
+	height: 215px;
 	background: url('images/bg-allwords-top.jpg') no-repeat;
-	background-position: -15px -6px;
 	padding: 0;
 	margin: 0;
 }
 #book-main {
 	/* Main body of book */
-	width: 849px;
-	height: 869px;
+	width: 845px;
+	height: 970px;
 	padding: 0;
 	margin: 0;
 	background: url('images/bg-allwords-main.jpg') no-repeat;
-	background-position: -15px 0;
 }
 #template-column-left {
 	float: left;
-	width: 40%;
-	height: 500px;
+	width: 34%;
+	height: 800px;
 	padding: 16px;
 	background: transparent;
 }
@@ -1873,12 +1874,17 @@ img#wpstats {
 		float: right;
 		width: 26.041666667%;
 	}
-	#share-section ul {
+	#share-section {
 		position: relative;
 		overflow: hidden;
-		margin: 0 0 0 25%;
+		margin: 0 auto 0 auto;
 		padding: 0;
 		max-height: 62px;
+		width: 720px;
+	}
+	#share-section ul {
+		padding: 0;
+		margin-left: 25%;
 	}
 	#share-section li {
 		float: left;
@@ -1887,15 +1893,15 @@ img#wpstats {
 		height: auto;
 	}
 	#share-section li#tumblr {
-		background: url('images/bg-tumblr.jpg') no-repeat;
+		background: url('images/tumblr1.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section li#facebook {
-		background: url('images/bg-facebook.jpg') no-repeat;
+		background: url('images/facebook1.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section li#twitter {
-		background: url('images/bg-twitter.jpg') no-repeat;
+		background: url('images/twitter1.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section a {

@@ -287,49 +287,15 @@ endif;
 
 if ( ! function_exists( 'emotionary_install' ) ) :
 	function emotionary_install() {
-		// Set up emotion post type
-		add_action( 'init', 'create_emotion_type' );
-		function create_emotion_type() {
-			register_post_type( 'emotion', 
-				array(
-					'labels' => array(
-						'name' => __( 'Emotions' ),
-						'singular_name' => __( 'Emotion' ),
-					),
-					'public' => true,
-					'has_archive' => true,
-					'rewrite' => array( 'slug' => 'emotionary' ),
-				)
-			);
-		}
+		// Register JS
+		wp_register_script( 'book-organizer', 
+		get_template_directory_uri() . '/js/book-organizer.js',
+		array( 'jquery' ) );
 	}
 endif;
-/*
-if ( ! function_exists( 'emotionary_related_posts' ) ) :
-	// Display the FEELIN IT links and provides functionality
-	// 
-	// TODO: This should be a plugin, I know I know ... 
-	function emotionary_feelin_it() {
-		// initiating emotionary javascript
-		wp_enqueue_script( 
-			'emotionary', 
-			get_template_directory_uri() . '/js/feelinit.js', 
-			array( 'jquery' ));
-		
-		
-		$felt_class = emotionary_has_already_felt($_SERVER['REMOTE ADDR'], get_the_ID()); 
-		
-		?>
-		<div id="feelin-it" <?php if ($felt_class) : ?>class="alreadyfelt"<?php endif; ?>>
-				
-				<p>Feelin It</p>
-				<span id="ip-invisible"><?php printf( '%s', $_SERVER['REMOTE_ADDR'] ); ?></span>
-		</div>
-		
-		<?php
-	}
-endif;
-*/
+
+add_action( 'init', 'emotionary_install' );
+
 if ( ! function_exists('emotionary_has_already_felt') ) : 
 	// Checks to see if given IP already felt this post
 	function emotionary_has_already_felt($ip, $post_id) {
@@ -376,11 +342,7 @@ if ( ! function_exists( 'emotionary_get_az_category' ) ) :
 				<?php endwhile; ?>
 			</div>
 			<?php
-			wp_enqueue_script(
-				'emotionary',
-				get_template_directory_uri() . '/js/book-organizer.js',
-				array( 'jquery' )
-			);
+			wp_enqueue_script( 'book-organizer' );
 	}
 endif;
 
@@ -406,11 +368,7 @@ if ( ! function_exists( 'emotionary_get_az' ) ) :
 			<?php endwhile; ?>
 		</div>
 		<?php
-		wp_enqueue_script(
-			'emotionary',
-			get_template_directory_uri() . '/js/book-organizer.js',
-			array( 'jquery' )
-		);
+		wp_enqueue_script( 'book-organizer' );
 	}
 endif;
 
