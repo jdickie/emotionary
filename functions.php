@@ -388,29 +388,54 @@ if ( ! function_exists( 'emotionary_related_posts' ) ) :
 				$cur_id = get_the_ID();
 				// get Categories
 				$cats = get_the_category();
+				
 				if( is_array( $cats ) ) {
 					$temp = array();
+	
 					foreach($cats as $c) {
 						array_push($temp, $c->term_id);
 					}
 					$cats = $temp;
+					
+					if( (count($cats) == 1) && $cats[0] === '1' ) {
+						$args = array(
+							'orderby' => 'rand',
+							'posts_per_page' => -1
+						);
+					} else {
+						$args = array(
+							'cat' => $cats[0],
+							'posts_per_page' => -1,
+							'orderby' => 'rand'
+						);
+					}
+					
 				} else {
-					$cats = $cats->term_id;
+					if( $cats->name === 'Uncategorized' ) {
+						$args = array(
+							'orderby' => 'rand',
+							'posts_per_page' => -1
+						);
+					} else {
+						
+						$args = array(
+							'orderby' => 'rand',
+							'posts_per_page' => -1,
+							'cat' => $cats->term_id
+						);
+					}
+					
 				}
 				// this is happening after main loop, need to re-query
-				$args = array(
-					'cat' => $cats[0],
-					'posts_per_page' => -1
-				);
 				query_posts($args);
-			 	
+				
 				// stop after x amount
 				$x = 3;
 				$count = 0;
 			?>
 			<div id="index-related-posts">
-				<h1>Related Emotions</h1>
 				<div class="line-clear">&nbsp;</div>
+				<h1>Related Emotions</h1>
 				<ul id="related-posts-list">
 					<?php while ( have_posts() && ($count < $x) ) : the_post(); ?>
 						<?php if( $cur_id != get_the_ID() ) : ?>

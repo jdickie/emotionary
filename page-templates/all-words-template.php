@@ -21,14 +21,14 @@ get_header(); ?>
 							<div class="inner-page">
 							</div>
 							<div id="nav-left">
-								<a href='#'><--</a>
+								<a href='#'>&nbsp;</a>
 							</div>
 						</div>
 						<div id="template-column-right">
 							<div class="inner-page">
 							</div>
 							<div id="nav-right">
-								<a href='#'>--></a>
+								<a href='#'>&nbsp;</a>
 							</div>
 						</div>
 					</div>

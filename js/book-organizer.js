@@ -123,7 +123,7 @@
 		
 		if( page_array[prev] ) {
 			$( '#nav-left' ).show();
-		}
+		} 
 	};
 	
 	$(document).ready(function() {
@@ -134,7 +134,6 @@
 			turn_page('back');
 			
 		});
-		$('#nav-left').hide();
 		
 		if ( (!page_array[cur_page]) && ($('#sort-az div').length === 0) ) {
 			cur_page = cur_page - 1;
@@ -145,7 +144,7 @@
 			e.preventDefault();
 			turn_page('next');
 		});
-		
+		cbeck_pages();
 	});
 	
 })(jQuery);
