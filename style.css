@@ -1086,13 +1086,16 @@ article.type-page {
 .line-clear {
 	width: 70%;
 	height: 30px; 
-	margin-left: 12.5%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 5px;
 	background: url('images/line-long.jpg') no-repeat;
 }
 .line-clear.long {
 	background: url('images/line-long.jpg') no-repeat;
-	width: 960px !important;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	height: 36px !important;
 }
 /* Feelin it */
@@ -1582,7 +1585,7 @@ a.comment-edit-link:hover {
 	margin: 0;
 	padding: 0;
 	width: 1000px;
-	height: 1100px;
+	height: 1185px;
 	/* position in middle */
 	overflow: hidden;
 	position: relative;
@@ -1747,7 +1750,19 @@ a.comment-edit-link:hover {
 }
 /* Submission update */
 #emotionary-form-wrapper .updated {
-	
+	display: none;
+}
+#submission-success {
+	width: 65%;
+	position: absolute;
+	top: 17%;
+	margin-left: 15%;
+}
+#submission-success h3 {
+	font-size: 24px;
+}
+#submission-success p {
+	line-height: 2em;
 }
 
 /* =Words Most Felt
@@ -1893,15 +1908,15 @@ img#wpstats {
 		height: auto;
 	}
 	#share-section li#tumblr {
-		background: url('images/tumblr1.jpg') no-repeat;
+		background: url('images/bg-tumblr.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section li#facebook {
-		background: url('images/facebook1.jpg') no-repeat;
+		background: url('images/bg-facebook.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section li#twitter {
-		background: url('images/twitter1.jpg') no-repeat;
+		background: url('images/bg-twitter.jpg') no-repeat;
 		background-position: 0 0;
 	}
 	#share-section a {
@@ -2021,6 +2036,7 @@ img#wpstats {
 		background-color: #FFF;
 		background-image: url('images/background2.jpg');
 		background-repeat: repeat-y repeat-x;
+		background-attachment: fixed;
 	}
 	body .site {
 		padding: 0 40px;
