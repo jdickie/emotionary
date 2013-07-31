@@ -144,7 +144,7 @@
 			e.preventDefault();
 			turn_page('next');
 		});
-		cbeck_pages();
+		check_pages();
 	});
 	
 })(jQuery);

@@ -16,13 +16,16 @@ get_header(); ?>
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
 		  <div id="book_header">
-		  	<?php single_cat_title(); ?>s
+		  	
 			</div>
 			<div id="template-book-wrapper">
 				<div id="book-side">
 				</div>
 				<div id="inner-fix">
 					<div id="book-top">
+						<div id="category-title">
+							<h3><?php single_cat_title(); ?></h3>
+						</div>
 					</div>
 			
 					<div id="book-main">
