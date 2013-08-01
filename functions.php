@@ -296,27 +296,6 @@ endif;
 
 add_action( 'init', 'emotionary_install' );
 
-if ( ! function_exists('emotionary_has_already_felt') ) : 
-	// Checks to see if given IP already felt this post
-	function emotionary_has_already_felt($ip, $post_id) {
-		$felt = get_post_custom_values($ip, $post_id);
-		if ( count($felt) > 0 ) {
-			// User already felt this at this IP
-			return true;
-		} else {
-			return false;
-		}
-	}
-endif;
-
-if ( ! function_exists('emotionary_felt_count') ) :
-	// Inserts how many times this given IP has been felt
-	function emotionary_felt_count() {
-		$felts = get_post_custom_keys();
-		return printf(__('Felt %s times'), count($felts));
-	}
-endif;
-
 if ( ! function_exists( 'emotionary_get_az_category' ) ) :
 	// Display all posts from a-z filtered by category
 	function emotionary_get_az_category() {

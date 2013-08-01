@@ -20,7 +20,7 @@
 		</nav><!-- #site-navigation -->
 		<div class="line-clear long">&nbsp;</div>
 		<div class="site-info">
-			<span class="copyright">&copy; <?php printf( __( '%s by Eden Sher, ' ), the_time('Y') ); 
+			<span class="copyright">&copy; <?php printf( __( '%s Created by Eden Sher, ' ), the_time('Y') ); 
 			print __('Illustrations by ') . "<a href=\"http://elizabethgraeber.com\">Elizabeth Graeber</a>";
 			print __(', Coded by ') . "<a href=\"http://grantdickie.com\">Grant Dickie</a>"; ?></span>
 		</div><!-- .site-info -->
