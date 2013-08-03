@@ -240,7 +240,7 @@ if ( ! function_exists('emotionary_nav_prev') ) :
 		global $wp_query;
 		
 		$html_id = esc_attr( $html_id ); ?>
-		<nav id="<?php echo $html_id; ?>" class="navigation <?php if ( $wp_query->max_num_pages <= 1 ) : ?>hidden<?php endif; ?>" role="navigation">
+		<nav id="<?php echo $html_id; ?>" class="navigation <?php if ( $wp_query->max_num_pages <= 1 || get_next_posts_link() == '' ) : ?>hidden<?php endif; ?>" role="navigation">
 		<?php if ( $wp_query->max_num_pages > 1) : ?>
 		<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Previous', 'twentytwelve' ) ); ?></div>
 		<?php endif; ?>
@@ -254,10 +254,9 @@ if ( ! function_exists('emotionary_nav_next') ) :
 		global $wp_query;
 		
 		$html_id = esc_attr( $html_id ); ?>
-		<nav id="<?php echo $html_id; ?>" class="navigation <?php if ( $wp_query->max_num_pages <= 1 ) : ?>hidden<?php endif; ?>" role="navigation">
-		<?php if ( $wp_query->max_num_pages > 1) : ?>
-		
-		<div class="nav-next alignright"><?php previous_posts_link( __( 'Next <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
+		<nav id="<?php echo $html_id; ?>" class="navigation <?php if ( $wp_query->max_num_pages <= 1 || get_previous_posts_link() == '' ) : ?>hidden<?php endif; ?>" role="navigation">
+		<?php if ( $wp_query->max_num_pages > 1) : ?>			
+			<div class="nav-next alignright"><?php previous_posts_link( __( 'Next <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?></div>
 		<?php endif; ?>
 		</nav>
 <?php
@@ -302,6 +301,8 @@ if ( ! function_exists( 'emotionary_get_az_category' ) ) :
 			// put these in separate div to be sorted by JS
 			// wp_reset_query();
 			query_posts( array(
+				'order' => 'ASC',
+				'orderby' => 'title',
 				'posts_per_page' => -1,
 				'cat' => get_cat_ID( single_cat_title('', false) )
 			) );

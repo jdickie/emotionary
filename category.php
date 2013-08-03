@@ -32,15 +32,17 @@ get_header(); ?>
 						<div id="template-column-left">
 							<div class="inner-page">
 							</div>
-							<div id="nav-left">
-								<a href="#">&nbsp;</a>
-							</div>
 						</div>
 						<div id="template-column-right">
 							<div class="inner-page">
 							</div>
+						</div>
+						<div id="template-nav-bottom">
+							<div id="nav-left">
+								<a href='#'>&nbsp;</a>
+							</div>
 							<div id="nav-right">
-								<a href="#">&nbsp;</a>
+								<a href='#'>&nbsp;</a>
 							</div>
 						</div>
 					</div>

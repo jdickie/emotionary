@@ -417,14 +417,13 @@ img.wp-smiley,
 	position: relative;
 	background: url('images/leftarrow.jpg') no-repeat;
 	background-size: 100px 66px;
-	margin-top: 10%;
 	margin-right: 2%;
 }
 .site-content nav#nav-left-large a {
 	position: absolute;
 	top: 20px;
 	padding: 100px;
-	text-indent: -9999px;
+	text-indent: 9999px;
 }
 .site-content nav#nav-right-large {
 	width: 18%;
@@ -432,20 +431,20 @@ img.wp-smiley,
 	background: url('images/rightarrow.jpg') no-repeat;
 	background-size: 100px 66px;
 	float: left;
-	margin-top: 10%;
 	margin-left: 8%;
 	position: relative;
 }
 .site-content nav#nav-left-large.hidden, 
 .site-content nav#nav-right-large.hidden {
-	display: hidden;
+	background-image: none;
+	background: #FFF;
 }
 .site-content nav#nav-right-large a {
 	padding: 100px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	text-indent: 9999px;
+	text-indent: -9999px;
 }
 #nav-above {
 	padding: 24px 0;
@@ -786,11 +785,15 @@ footer[role="contentinfo"] a:hover {
 .entry-header {
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
 }
+.entry-header 
 .entry-header img.wp-post-image {
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
-	width: 440px !important;
+	width: 100% !important;
 	height: auto !important;
 }
 .entry-header .entry-title {
@@ -833,6 +836,10 @@ article.sticky .featured-post {
 	margin-bottom: 24px;
 	margin-bottom: 1.714285714rem;
 	text-align: center;
+}
+#emotionary-content-wrapper {
+	width: 45.83%;
+	float: left;
 }
 .entry-content,
 .entry-summary,
@@ -1063,7 +1070,6 @@ img.aligncenter {
 	padding-bottom: 10px;
 	padding-bottom: 0.71428571428571rem;
 	word-wrap: break-word;
-	width: 45.83%;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	hyphens: auto;
@@ -1188,6 +1194,9 @@ article.type-page {
 footer.entry-meta {
 	margin-top: 24px;
 	margin-top: 1.714285714rem;
+	margin-right: auto;
+	margin-left: auto;
+	width: 45.83%;
 	font-size: 16px;
 	font-size: 1.14285714285714rem;
 	line-height: 1.846153846;
@@ -1557,7 +1566,7 @@ a.comment-edit-link:hover {
 	margin: 0 auto 0 auto;
 	padding: 0;
 	max-height: 62px;
-	width: 720px;
+	width: 75%;
 }
 #share-section ul {
 	padding: 0;
@@ -1565,7 +1574,7 @@ a.comment-edit-link:hover {
 }
 #share-section li {
 	float: left;
-	margin: 2px 14px 10px 14px;
+	margin: 0.5% 2% 0.5% 2%;
 	width: 100px;
 	height: auto;
 }
@@ -1683,7 +1692,7 @@ a.comment-edit-link:hover {
 #template-column-left {
 	float: left;
 	width: 34%;
-	height: 744px;
+	height: 715px;
 	padding: 16px;
 	background: transparent;
 }
@@ -1696,6 +1705,31 @@ a.comment-edit-link:hover {
 	padding: 16px;
 	background: transparent;
 }
+#template-nav-bottom {
+	clear: both;
+	width: 68%;
+	overflow: hidden;
+	position: relative;
+	height: 24px;
+}
+#template-nav-bottom #nav-left {
+	width: 75px;
+	height: 36px;
+	float: left;
+}
+#template-nav-bottom #nav-right {
+	width: 75px;
+	height: 36px;
+	float: right;
+}
+#template-nav-bottom #nav-left a {
+	padding: 18.5px 37.5px 18.5px 37.5px;
+	background: url('images/left-arrow.png') no-repeat;
+}
+#template-nav-bottom #nav-right a {
+	padding: 10px 37.5px 10px 37.5px;
+	background: url('images/right-arrow.png') no-repeat;
+}
 .post-dictionary {
 	display: block;
 	padding: 3px;
@@ -1707,6 +1741,13 @@ a.comment-edit-link:hover {
 	font-weight: bold;
 	font-size: 20px;
 	display: block;
+}
+.post-dictionary a:link,
+.post-dictionary a:visited,
+.post-dictionary a:hover,
+.post-dictionary a:active {
+	padding: 0;
+	color: #000;
 }
 /* Overridding default for img size */
 .post-dictionary .attachment-post-thumbnail {
@@ -1786,7 +1827,7 @@ a.comment-edit-link:hover {
 	width: 75%;
 	position: absolute;
   top: 159px;
-	right: 75px;
+	right: 110px;
 }
 #emotionary-form-wrapper .wdform_table1 {
 	
@@ -1803,28 +1844,38 @@ a.comment-edit-link:hover {
 #emotionary-form-wrapper textarea {
 	background: transparent;
 }
+/* Specific to let's get emotional button */
+#emotionary-form-wrapper td.Submit_Area {
+	width: 600px;
+}
 .button_submit {
-	font-size: 14px;
-	font-weight: bold;
-	margin-top: 40px;
+	text-indent: -9999px;
+	margin: 0 auto 0 40px;
 	background: transparent;
 	border: none;
+	width: 450px;
+	height: 70px;
+	background: url('images/submit-button.png') no-repeat;
 }
+.button_submit:hover {
+	background: url('images/submit-button2.png') no-repeat;
+}
+
 /* Submission update */
-#emotionary-form-wrapper .updated {
+.updated {
 	display: none;
 }
 #submission-success {
 	width: 65%;
+	height: 300px;
 	position: absolute;
-	top: 17%;
-	margin-left: 15%;
+	top: 27%;
+	margin-left: 12%;
+	background: url('images/thanks-submit.png') no-repeat;
 }
-#submission-success h3 {
-	font-size: 24px;
-}
+#submission-success h3,
 #submission-success p {
-	line-height: 2em;
+	text-indent: -9999px;
 }
 
 /* =Words Most Felt
@@ -1926,68 +1977,245 @@ img#wpstats {
 
 /* small screen */
 @media (width: 320px) {
-	.site {
+	body {
 		max-width: 320px;
+		position: relative;
+		overflow: hidden;
 	}
-	header {
-		display: none;
+	.site {
+		width: 280px;
 	}
 	.site article {
 		float: none;
 		width: 100%;
 	}
-	#nav-right-large,
-	#nav-left-large {
+	.site article h3 {
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.site article p {
+		font-size: 11px;
+	}
+	.site-content nav#nav-right-large,
+	.site-content nav#nav-left-large {
 		float: none;
 		clear: both;
 		width: 45%;
+		height: 20px;
 	}
-	#nav-right-large {
-		background: url('images/rightarrow-tiny.jpg') no-repeat;
-		
-	}
-	#nav-left-large {
-		background: url('images/leftarrow-tiny.jpg') no-repeat;
-	}
-	#share-section li {
-		float: left;
-		margin: 2px 14px 10px 14px;
-		width: 20px;
-		height: auto;
-	}
-	#share-section li#tumblr {
-		background: url('images/bg-tumblr.jpg') no-repeat;
-		background-position: 0 0;
-	}
-	#share-section li#facebook {
-		background: url('images/bg-facebook.jpg') no-repeat;
-		background-position: 0 0;
-	}
-	#share-section li#twitter {
-		background: url('images/bg-twitter.jpg') no-repeat;
-		background-position: 0 0;
-	}
-	#header,
-	#index-related-posts {
-		display: none;
-	}
-}
-
-/* iPhone, Android, Blackberry, ALL PHONES */
-@media handheld {
-	.site {
-		max-width: 320px;
-	}
-	
 	.site-content nav#nav-right-large {
 		background: url('images/rightarrow-tiny.jpg') no-repeat;
 	}
 	.site-content nav#nav-left-large {
 		background: url('images/leftarrow-tiny.jpg') no-repeat;
 	}
-	#header,
-	#index-related-posts {
+	.site-content nav#nav-left-large.hidden, .site-content nav#nav-right-large.hidden {
 		display: none;
+	}
+	#share-section,
+	#share-section ul {
+		max-height: 22px;
+	}
+	#share-section ul {
+		margin-left: 10%;
+	}
+	#share-section li {
+		float: left;
+		margin: 0.5% 8% 0.5% 8%;
+		width: 20px;
+		height: auto;
+	}
+	#share-section li#tumblr {
+		background: url('images/bg-tumblr-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#facebook {
+		background: url('images/bg-facebook-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#twitter {
+		background: url('images/bg-twitter-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#site-navigation li {
+		display: none;
+	}
+	#site-navigation li#menu-item-114 {
+		display: block;
+	}
+	#menu-emotionary-footer-navigation li:hover,
+	#menu-emotionary-footer-navigation li:active {
+		width: 144px;
+	}
+	#index-related-posts,
+	.line-clear {
+		display: none;
+	}
+	.site-content #feelin-it {
+		margin-left: 20%;
+	}
+}
+
+@media (width: 480px) {
+	body {
+		max-width: 480px;
+		position: relative;
+		overflow: hidden;
+	}
+	.site {
+		width: 320px;
+	}
+	.site article {
+		float: none;
+		width: 100%;
+	}
+	.site article h3 {
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.site article p {
+		font-size: 11px;
+	}
+	.site-content nav#nav-right-large,
+	.site-content nav#nav-left-large {
+		float: none;
+		clear: both;
+		width: 45%;
+		height: 20px;
+	}
+	.site-content nav#nav-right-large {
+		background: url('images/rightarrow-tiny.jpg') no-repeat;
+		
+	}
+	.site-content nav#nav-left-large {
+		background: url('images/leftarrow-tiny.jpg') no-repeat;
+	}
+	.site-content nav#nav-left-large.hidden, .site-content nav#nav-right-large.hidden {
+		display: none;
+	}
+	#share-section,
+	#share-section ul {
+		max-height: 22px;
+	}
+	#share-section ul {
+		margin-left: 10%;
+	}
+	#share-section li {
+		float: left;
+		margin: 0.5% 8% 0.5% 8%;
+		width: 20px;
+		height: auto;
+	}
+	#share-section li#tumblr {
+		background: url('images/bg-tumblr-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#facebook {
+		background: url('images/bg-facebook-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#twitter {
+		background: url('images/bg-twitter-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#site-navigation li {
+		display: none;
+	}
+	#site-navigation li#menu-item-114 {
+		display: block;
+	}
+	#menu-emotionary-footer-navigation li:hover,
+	#menu-emotionary-footer-navigation li:active {
+		width: 144px;
+	}
+	#index-related-posts,
+	.line-clear {
+		display: none;
+	}
+	.site-content #feelin-it {
+		margin-left: 20%;
+	}
+}
+
+/* iPhone, Android, Blackberry, ALL PHONES */
+@media handheld {
+	body {
+		max-width: 480px;
+		position: relative;
+		overflow: hidden;
+	}
+	.site {
+		width: 320px;
+	}
+	.site article {
+		float: none;
+		width: 100%;
+	}
+	.site article h3 {
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.site article p {
+		font-size: 11px;
+	}
+	.site-content nav#nav-right-large,
+	.site-content nav#nav-left-large {
+		float: none;
+		clear: both;
+		width: 45%;
+		height: 20px;
+	}
+	.site-content nav#nav-right-large {
+		background: url('images/rightarrow-tiny.jpg') no-repeat;
+		
+	}
+	.site-content nav#nav-left-large {
+		background: url('images/leftarrow-tiny.jpg') no-repeat;
+	}
+	.site-content nav#nav-left-large.hidden, .site-content nav#nav-right-large.hidden {
+		display: none;
+	}
+	#share-section,
+	#share-section ul {
+		max-height: 22px;
+	}
+	#share-section ul {
+		margin-left: 10%;
+	}
+	#share-section li {
+		float: left;
+		margin: 0.5% 8% 0.5% 8%;
+		width: 20px;
+		height: auto;
+	}
+	#share-section li#tumblr {
+		background: url('images/bg-tumblr-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#facebook {
+		background: url('images/bg-facebook-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#share-section li#twitter {
+		background: url('images/bg-twitter-small.png') no-repeat;
+		background-position: 0 0;
+	}
+	#site-navigation li {
+		display: none;
+	}
+	#site-navigation li#menu-item-114 {
+		display: block;
+	}
+	#menu-emotionary-footer-navigation li:hover,
+	#menu-emotionary-footer-navigation li:active {
+		width: 144px;
+	}
+	#index-related-posts,
+	.line-clear {
+		display: none;
+	}
+	.site-content #feelin-it {
+		margin-left: 20%;
 	}
 }
 
@@ -2070,7 +2298,6 @@ img#wpstats {
 		color: #636363;
 		font-weight: bold;
 	}
-	
 	.menu-toggle {
 		display: none;
 	}

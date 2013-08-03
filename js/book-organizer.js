@@ -33,18 +33,15 @@
 		colleft = $('#template-column-left .inner-page'), colright = $('#template-column-right .inner-page'),
 		colcount = 0,
 		leftfull = false, h, colwidth = get_width(), cur_el = null;
-		
-		console.log('sort columns');
-		console.log($('#sort-az > div').length);
-		
+		if (!page_array[cur_page]) {
+			page_array[cur_page] = {
+				'left': '',
+				'right': ''
+			};
+		}
 		// Fetch post, stick it in either column, make sure we don't go over max y values
 		$('#sort-az > div').each(function(i, o) {
-			if (!page_array[cur_page]) {
-				page_array[cur_page] = {
-					'left': '',
-					'right': ''
-				};
-			} 
+			
 			
 			// Insert into left or right
 			if (leftfull === false) {
@@ -67,7 +64,7 @@
 				page_array[cur_page]['right'] = page_array[cur_page]['right'] + '' + clone_div($(o));
 				
 			} else {
-				$(o).prependTo('#sort-az');
+				$(o).appendTo('#sort-az');
 				return;
 			}
 			colcount = colcount + h;
